@@ -1,0 +1,52 @@
+//<BUTTONS (a.btn+tab)>
+// Сніппет (HTML): btn
+
+.button {
+	display: inline-flex;
+	padding: toRem(8);
+	min-height: toRem(64);
+	align-items: center;
+	justify-content: center;
+	border-radius: toRem(60);
+	background-color: $bgColorLite;
+	color: #fff;
+	font-size: toRem(24);
+	font-weight: 700;
+	transition: all 0.3s;
+	line-height: 133.333333%; /* 32/24 */
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: $bgColorSemi;
+		}
+	}
+	&--min {
+		font-size: toRem(18);
+		line-height: 150%; /* 24/18 */
+		padding: toRem(12) toRem(36);
+		min-height: 0;
+	}
+	&--white {
+		background-color: #fff;
+		color: $bgColorLite;
+	}
+	&--icon {
+		span {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding-left: toRem(16);
+			gap: toRem(16);
+			&::after {
+				content: "";
+				background: #fff url("@img/icons/phone.svg") center no-repeat;
+				flex: 0 0 toRem(48);
+				width: toRem(48);
+				height: toRem(48);
+				border-radius: 50%;
+			}
+		}
+	}
+	&--fw {
+		width: 100%;
+	}
+}

@@ -1,0 +1,101 @@
+// Заголовки, загальні БЕМ блоки та інше...
+.block-header {
+	display: grid;
+	@include adaptiveValue("gap", 24, 15);
+	// .block-header--center
+	&--center {
+		text-align: center;
+	}
+	&--inline {
+		grid-template-columns: minmax(auto, toRem(586)) minmax(auto, toRem(613));
+		justify-content: space-between;
+		align-items: end;
+		@media (max-width: $tablet) {
+			grid-template-columns: auto;
+		}
+	}
+	// .block-header__title
+	&__title {
+		color: $darkColor;
+		@include adaptiveValue("font-size", 52, 24);
+		font-weight: 700;
+		line-height: 1.23;
+		// .block-header__title--big
+		&--big {
+			@include adaptiveValue("font-size", 64, 32);
+		}
+		// .block-header__title--white
+		&--white {
+			color: #fff;
+		}
+
+		transform: translate(0, 15%);
+		opacity: 0;
+		transition:
+			transform 0.5s,
+			opacity 0.5s; 
+		._watcher-view & {
+			transform: translate(0, 0);
+			opacity: 1;
+		}
+	}
+	// .block-header__text
+	&__text {
+		transform: translate(0, 15%);
+		opacity: 0;
+		transition:
+			transform 0.5s 0.3s,
+			opacity 0.5s 0.3s;
+		._watcher-view & {
+			transform: translate(0, 0);
+			opacity: 1;
+		}
+		p {
+			line-height: 1.55;
+		}
+		a {
+			font-weight: 700;
+			color: $bgColorLite;
+			text-decoration: underline;
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+/*
+<div class="block-header">
+	<h2 class="block-header__title">
+	</h2>
+	<div class="block-header__text">
+		<p>
+		</p>
+	</div>
+</div>
+*/
+//========================================================================================================================================================
+.text {
+	line-height: 155.555556%;
+	p {
+		&:not(:last-child) {
+			margin-bottom: toRem(15);
+		}
+	}
+}
+//========================================================================================================================================================
+.done {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: toRem(40);
+	row-gap: toRem(8);
+	// .done__item
+	&__item {
+		color: $bgColorLite;
+		padding-left: toRem(32);
+		@include adaptiveValue("font-size", 20, 18);
+		line-height: 1.3;
+		background: url("@img/icons/check-blue.svg") left toRem(1) no-repeat;
+	}
+}
